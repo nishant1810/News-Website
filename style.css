@@ -8,43 +8,35 @@
 
 :root {
     --primary-text-color: #183b56;
-    --secondary-text-color: #577592;
-    --accent-color: #2294ed;
+    --secondary-text-color: #41658c;
+    --accent-color: #fb0909;
     --accent-color-dark: #1d69a3;
+    --background-light: #f3faff;
+    --background-dark: #121212;
+    --card-light: #ffffff;
+    --card-dark: #1e1e1e;
 }
 
 body {
     font-family: "Poppins", sans-serif;
     color: var(--primary-text-color);
+    background-color: var(--background-light);
+    line-height: 1.6;
 }
 
-p {
-    font-family: "Roboto", sans-serif;
-    color: var(--secondary-text-color);
-    line-height: 1.4rem;
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: #f0f0f0;
 }
 
-a {
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-}
-
-.container {
-    max-width: 1180px;
-    margin-inline: auto;
-    overflow: hidden;
+body.dark-mode .card {
+    background-color: var(--card-dark);
+    box-shadow: 0 0 4px #333;
 }
 
 nav {
-    background-color: #f3faff;
+    background-color: transparent;
+    backdrop-filter: blur(200px); 
     box-shadow: 0 0 4px #bbd0e2;
     position: fixed;
     top: 0;
@@ -54,81 +46,56 @@ nav {
 }
 
 .main-nav {
+    display: flex;
     justify-content: space-between;
-    padding-block: 8px;
+    align-items: center;
+    padding:15px;
+    padding-block: 2px;
 }
 
 .company-logo img {
-    width: 120px;
+    width: 60px;
+    height: auto;
 }
 
 .nav-links ul {
-    gap: 16px;
+    display: flex;
+    gap: 50px;
 }
 
 .hover-link {
     cursor: pointer;
+    transition: color 0.2s ease;
+    color: var(--primary-text-color);
 }
 
 .hover-link:hover {
-    color: var(--secondary-text-color);
-}
-
-.hover-link:active {
-    color: red;
-}
-
-.nav-item.active {
-    color: var(--accent-color);
-}
-
-.search-bar {
-    height: 32px;
-    gap: 8px;
-}
-
-.news-input {
-    width: 200px;
-    height: 100%;
-    padding-inline: 12px;
-    border-radius: 4px;
-    border: 2px solid #bbd0e2;
-    font-family: "Roboto", sans-serif;
-}
-
-.search-button {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 8px 24px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: "Roboto", sans-serif;
-}
-
-.search-button:hover {
-    background-color: var(--accent-color-dark);
+    color: rgb(6, 111, 247);
 }
 
 main {
-    padding-block: 20px;
-    margin-top: 150px;
+    padding: 20px 16px;
+    margin-top: 120px; 
 }
 
 .cards-container {
+    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    row-gap: 20px;
-    align-items: start;
+    gap:20px;
+    align-items: flex-start;
 }
 
 .card {
-    width: 360px;
-    min-height: 400px;
+    width: 360px; 
+    height: 480px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
     box-shadow: 0 0 4px #d4ecff;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--card-light);
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -140,15 +107,41 @@ main {
 }
 
 .card-header img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+    width: 100%
 }
 
 .card-content {
     padding: 12px;
+    display: flex;
+    flex-direction: column;
 }
 
 .news-source {
-    margin-block: 12px;
+    margin: 12px 0;
+}
+
+@media (max-width: 1024px) {
+    .main-nav {
+        padding-block: 2px;
+    }
+
+    .nav-links ul {
+        gap: 30px;
+        margin-right: 10px;
+    }
+
+    .company-logo img {
+        width: 50px;
+        margin-right: 15px;
+    }
+
+    .card {
+        width: 45%; 
+        height: 480px; 
+        gap:5px;
+
+    .news-input {
+        width: 180px;
+    }
+}
 }
